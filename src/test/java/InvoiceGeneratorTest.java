@@ -20,4 +20,15 @@ public class InvoiceGeneratorTest{
         double fare = invoiceGenerator.calculateFare(distance, time);
         Assert.assertEquals(5,fare,0.0);
     }
+
+    @Test
+    public void givenMultipleRides_ShouldReturnTotalFare() {
+        InvoiceGenerator invoiceGenerator = new InvoiceGenerator();
+        Ride[] rides = { new Ride(12,1),
+                         new Ride(25,2),
+                         new Ride(150,4),
+                         new Ride(15,1)};
+            double fare = invoiceGenerator.calculateFare(rides);
+            Assert.assertEquals(2028,fare,0.0);
+    }
 }
