@@ -1,3 +1,5 @@
+package models;
+
 public class InvoiceSummary {
     public double avgCost;
     public int numOfRides;
@@ -6,7 +8,7 @@ public class InvoiceSummary {
     public InvoiceSummary(int numOfRides, double totalFare) {
         this.numOfRides = numOfRides;
         this.totalFare = totalFare;
-        this.avgCost = this.totalFare/this.numOfRides;
+        this.avgCost = this.totalFare / this.numOfRides;
     }
 
     @Override

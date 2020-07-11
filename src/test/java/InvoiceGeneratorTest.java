@@ -1,5 +1,9 @@
+import services.InvoiceGenerator;
 import org.junit.Assert;
 import org.junit.Test;
+import models.InvoiceSummary;
+import models.Ride;
+import utility.SubscriptionType;
 
 public class InvoiceGeneratorTest {
 

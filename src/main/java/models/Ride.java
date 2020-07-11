@@ -1,7 +1,11 @@
+package models;
+
+import utility.SubscriptionType;
+
 public class Ride {
     public double distance;
-     public double time;
-    public  SubscriptionType type;
+    public double time;
+    public SubscriptionType type;
 
 
     public Ride(double distance, double time, SubscriptionType type) {
