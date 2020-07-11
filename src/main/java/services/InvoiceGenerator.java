@@ -6,6 +6,7 @@ import models.RideRepository;
 import utility.SubscriptionType;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class InvoiceGenerator {
 
@@ -13,7 +14,7 @@ public class InvoiceGenerator {
     private static double MINIMUM_FARE = 5.0;
     public double COST_PER_KM = 10.0;
     RideRepository rideRepository = null;
-    InvoiceGenerator() {
+    public InvoiceGenerator() {
         this.rideRepository = new RideRepository();
     }
 
@@ -33,17 +34,13 @@ public class InvoiceGenerator {
     }
 
     public InvoiceSummary getInvoiceSummary(String userId) {
-        double totalFare = 0.0;
+        double totalFare;
         ArrayList userRides = rideRepository.getRideDetails(userId);
         Ride[] rides = new Ride[userRides.size()];
         userRides.toArray(rides);
-        for (Ride ride : rides) {
-            totalFare += this.calculateFare(ride.distance, ride.time, ride.type);
-
-        }
+        totalFare = Arrays.stream(rides).mapToDouble(ride -> this.calculateFare(ride.distance, ride.time, ride.type)).sum();
         return new InvoiceSummary(rides.length, totalFare);
     }
-
     public void addRide(String userId, Ride[] rides) {
         rideRepository.addRides(userId, rides);
     }
