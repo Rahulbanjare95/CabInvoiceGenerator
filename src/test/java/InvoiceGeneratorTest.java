@@ -28,7 +28,8 @@ public class InvoiceGeneratorTest{
                          new Ride(25,2),
                          new Ride(150,4),
                          new Ride(15,1)};
-            double fare = invoiceGenerator.calculateFare(rides);
-            Assert.assertEquals(2028,fare,0.0);
+        InvoiceSummary invoiceSummary = invoiceGenerator.calculateFare(rides);
+        InvoiceSummary expected = new InvoiceSummary(4,2028);
+        Assert.assertEquals(expected,invoiceSummary);
     }
 }
